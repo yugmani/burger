@@ -8,7 +8,6 @@
 <div id="burger_grid">
     <div class="not-devoured">
         <h2>Burgers that are not Devoured!</h2>
-
             <ol>
               {{#each burgers}}
                 {{#unless devoured}}
@@ -16,11 +15,14 @@
                 {{/unless}}
               {{/each}}
             </ol>
+            
+            
+            
     </div>
 
     <div class="devoured">
     <h2>Burgers that are Devoured!</h2>
-
+          
             <ol>
               {{#each burgers}}
                 {{#if devoured}}
@@ -41,9 +43,9 @@
                   <input type="text" id="bug" name="name">
               </div>
               <div class="form-group">
-                  {{!-- <label for="devoured">devoured?</label><br> --}}
-                  <input type="radio" name="devoured" style="display:none" value="0" checked>
-                  {{!-- <input type="radio" name="sleepy" value="0"> Awake --}}
+                  {{!-- <label for="isDevoured">devoured?</label><br> --}}
+                  Undevoured:<input type="radio" name="devoured" value="0" checked> <br>
+                  Devoured:   <input type="radio" name="devoured" value="1"> 
               </div>
               <button type="submit">Add Burger</button>
           </form>

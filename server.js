@@ -50,7 +50,7 @@ app.get("/", function(req, res) {
 
 // Create a new burger
 app.post("/api/burgers", function(req, res) {
-  connection.query("INSERT INTO burgers (burger_name) VALUES (?)", [req.body.burger_name], function(err, result) {
+  connection.query("INSERT INTO burgers (burger_name, devoured) VALUES (?, ?)", [req.body.burger_name, req.body.devoured], function(err, result) {
     if (err) {
       return res.status(500).end();
     }
@@ -61,22 +61,20 @@ app.post("/api/burgers", function(req, res) {
   });
 });
 
-//Retrieve all burgers
-app.get("/api/burgers", function(req, res) {
-  connection.query("SELECT * FROM burgers;", function(err, data) {
+//update burger state from undevoured to devoured
+app.put("/api/burgers/:id", function(req, res) {
+  connection.query("UPDATE burgers SET devoured = ? WHERE id = ?;", [req.body.devoured, req.params.id], function(err, result) {
     if (err) {
       return res.status(500).end();
     }
-
-    res.json(data);
+    else if (result.changedRows === 0) {
+      // If no rows were changed, then the ID must not exist, so 404
+      return res.status(404).end();
+    }
+    res.json(result);
   });
 });
 
-
-// // Import routes and give the server access to them.
-// var routes = require("./controllers/burgers_controller.js");
-
-// app.use(routes);
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {

@@ -41,29 +41,39 @@ li {
 
   #add_form{
     margin:0 auto;
-    width:40%;
+    width:30%;
     padding:10px;
   }
   
   .create-form {
-    display:flex;
-    justify-content: space-between;
+    margin:0 auto;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
     width:100%;
     padding: 10px;
-    margin: 5px;
+    /* margin: 5px; */
     background: lightgray;
   }
   
   .form-group {
     margin-bottom: 5px;
-
+    /* background-color:red; */
   }
 
   form button{
     width:150px;
-    background-color:lightblue;
+    height:30px;
+    /* background-color:lightblue; */
   }
   
-  form input {
-    width:210px;
+  form #bug {
+    width:350px;
+    background-color: whitesmoke;
   }
+
+  form input[name="isDevoured"]{
+    width:150px;
+    background-color: white;
+  }
+  
